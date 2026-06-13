@@ -1,25 +1,19 @@
 function Palindroma(str) {
-  // 1. Pulisci la stringa come prima
-  let pulita = str.replace(/\W/g, "").toLowerCase();
+  // 1. Pulisci la stringa: rimuove tutti gli spazi e converte in minuscolo
+  let pulita = str.replace(/\s+/g, "").toLowerCase();
   
-  // 2. Inizializza due puntatori: uno all'inizio e uno alla fine
-  let sinistro = 0;
-  let destro = pulita.length - 1;
+  // 2. Crea la versione invertita
+  let invertita = pulita.split("").reverse().join("");
+  
+  console.log(invertita);
 
-  // 3. Muovi i puntatori verso il centro
-  while (sinistro < destro) {
-    // Se i caratteri non corrispondono, non è palindroma
-    if (pulita[sinistro] !== pulita[destro]) {
-      return false;
-    }
-    // Sposta i puntatori verso l'interno
-    sinistro++;
-    destro--;
+  // 3. Controllo con if/else
+  if (pulita === invertita) {
+    return true;
+  } else {
+    return false;
   }
-
-  // Se siamo arrivati qui, la stringa è palindroma
-  return true;
 }
 
-
+// Test
 console.log(Palindroma("i topi non avevano nipoti")); // true
